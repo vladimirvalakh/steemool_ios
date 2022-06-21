@@ -24,7 +24,7 @@ class LogInButton: UIButton {
     // MARK: - Private Methods
     
     private func setupApearance() {
-        self.frame = CGRect(x: 0, y: 0, width: 358, height: 52)
+        self.frame = CGRect(x: 0, y: 0, width: 358.HAdapted, height: 52.VAdapted)
         self.clipsToBounds = true
         self.layer.cornerRadius = 13.HAdapted
         self.applyGradient(colours: [.yellow, .blue])

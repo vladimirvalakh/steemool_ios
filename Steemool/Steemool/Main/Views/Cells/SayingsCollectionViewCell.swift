@@ -64,15 +64,14 @@ private extension SayingsCollectionViewCell {
         sayingsTextLabel.numberOfLines = 0
         sayingsTextLabel.adjustsFontSizeToFitWidth = true
         sayingsTextLabel.textAlignment = .left
-        sayingsTextLabel.font = UIFont(name: "SFPro-Regular", size: 15)
-        sayingsTextLabel.frame = CGRect(x: 0, y: 0, width: 250, height: 363)
+        sayingsTextLabel.font = UIFont(name: "SFPro-Medium", size: CGFloat(16).adaptedFontSize)
+        sayingsTextLabel.frame = CGRect(x: 0, y: 0, width: 306.HAdapted, height: 63.VAdapted)
         
         sayingsAuthorLabel.numberOfLines = 0
         sayingsAuthorLabel.adjustsFontSizeToFitWidth = true
         sayingsAuthorLabel.textAlignment = .right
-        sayingsAuthorLabel.font = UIFont.italicSystemFont(ofSize: 8)
         sayingsAuthorLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
-        sayingsAuthorLabel.font = UIFont(name: "SFProText-Medium", size: 10)
+        sayingsAuthorLabel.font = UIFont(name: "SFPro-Regular", size: CGFloat(13).adaptedFontSize)
     }
     
     func addSubviews() {
@@ -92,21 +91,22 @@ private extension SayingsCollectionViewCell {
         
         sayingsImageView.snp.makeConstraints{ make in
             make.top.centerX.equalToSuperview()
-            make.width.equalTo(self.sayingsImageView.snp.height)
-            make.height.equalTo(250.VAdapted) // image size
+            make.height.equalTo(360.VAdapted)
+            make.width.equalTo(310.VAdapted)
         }
         
         sayingsTextLabel.snp.makeConstraints{ make in
-            make.bottom.equalToSuperview().offset(-25.VAdapted)
+            make.bottom.equalToSuperview().offset(-26.VAdapted)
             make.leading.equalTo(4.VAdapted)
-            make.width.equalTo(246.HAdapted)
-            make.height.equalTo(88.VAdapted)
+            make.width.equalTo(306.HAdapted)
+            make.height.equalTo(63.VAdapted)
         }
         
         sayingsAuthorLabel.snp.makeConstraints{ make in
-            make.bottom.trailing.equalToSuperview().offset(-9.VAdapted)
-            make.height.equalTo(12.VAdapted)
-            make.centerX.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-9.VAdapted)
+            make.leading.equalToSuperview().offset(4.VAdapted)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(18.VAdapted)
         }
     }
 }

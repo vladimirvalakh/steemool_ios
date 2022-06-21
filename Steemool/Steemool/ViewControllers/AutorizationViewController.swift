@@ -73,7 +73,7 @@ private extension AutorizationViewController {
         button.contentMode = .right
         button.semanticContentAttribute = .forceRightToLeft
         
-        if let font = UIFont(name: "SFProText-Regular", size: 17) {
+        if let font = UIFont(name: "SFProText-Regular", size: CGFloat(17).adaptedFontSize) {
             button.titleLabel?.font = font
         }
         let rightBarButtonItem = UIBarButtonItem(customView: button)
@@ -126,7 +126,7 @@ private extension AutorizationViewController {
     private func setupHelpLabel() {
         helpLabel.text = "Забыли пароль?"
         helpLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
-        helpLabel.font = UIFont(name: "SFPro-Regular", size: 13)
+        helpLabel.font = UIFont(name: "SFPro-Regular", size: CGFloat(13).adaptedFontSize)
         helpLabel.textAlignment = .right
     }
     

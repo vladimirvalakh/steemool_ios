@@ -17,27 +17,27 @@ class ViewController: UIViewController {
     
     private var currentPage = 0
     
-    private lazy var sayingsCollectionViewHeight = 363.VAdapted
-    private lazy var sayingsCollectionViewWidth = 250.HAdapted
+    private lazy var sayingsCollectionViewHeight = 465.VAdapted
+    private lazy var sayingsCollectionViewWidth = 310.HAdapted
     
-    private lazy var sayingsCollectionViewSideInset = 24.HAdapted
+    private lazy var sayingsCollectionViewSideInset = 20.HAdapted
     
     private lazy var sayingsCollectionViewFrameSpacing = (view.bounds.width - sayingsCollectionViewWidth) / 2
+    
+    private let backgroundImageView = UIImageView(image: UIImage(named: "sayingsViewBackground"))
 
     // MARK: - Views
     
     private lazy var titleLabel: UILabel = {
-        var view = UILabel()
-        view.backgroundColor = .white
-        view.textColor = UIColor(red: 0.639, green: 0.416, blue: 0.98, alpha: 1)
-        view.font = UIFont(name: "SFPro-Bold", size: 28)
-
-        var paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.02
-
-        view.attributedText = NSMutableAttributedString(string: "Steemool", attributes: [NSAttributedString.Key.kern: 0.36, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        var titleLabel = UILabel()
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "SFPro-Bold", size: CGFloat(28).adaptedFontSize)
+        titleLabel.numberOfLines = 0
+        titleLabel.frame = CGRect(x: 0, y: 0, width: 358.HAdapted, height: 68.VAdapted)
         
-        return view
+        titleLabel.attributedText = NSMutableAttributedString(string: "Начни свой день c цитаты!", attributes: [NSAttributedString.Key.kern: 0.36, NSAttributedString.Key.paragraphStyle: NSMutableParagraphStyle()])
+
+        return titleLabel
     }()
     
     private lazy var layout: UICollectionViewFlowLayout = {
@@ -125,22 +125,28 @@ private extension ViewController {
     }
     
     func addSubviews() {
+        view.addSubview(backgroundImageView)
         view.addSubview(titleLabel)
         view.addSubview(sayingsCollectionView)
     }
     
     func configureLayout() {
+        backgroundImageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(-50.HAdapted)
+            make.top.equalToSuperview().offset(-80.VAdapted)
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.HAdapted)
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(34.VAdapted)
+            make.top.equalToSuperview().offset(92.VAdapted)
+            make.height.equalTo(68.VAdapted)
         }
         
         sayingsCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(24.VAdapted)
+            make.bottom.equalToSuperview().offset(-187.VAdapted)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(363.VAdapted)
+            make.height.equalTo(465.VAdapted)
         }
     }
 }
