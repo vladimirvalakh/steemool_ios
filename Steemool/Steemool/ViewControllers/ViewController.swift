@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         configureLayout()
     }
     
-    // MARK: - View settings methods
+    // MARK: - Internal methods
     
     func scrollToTheMiddle() {
         guard let sayingsData = sayingsData else { return }

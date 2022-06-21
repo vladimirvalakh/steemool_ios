@@ -9,17 +9,28 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
+    
+    private lazy var appCoordinator = ApplicationCoordinator()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController(rootViewController: AutorizationViewController())
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        initializeRootView()
+
         return true
     }
-
-
 }
+
+// MARK: - Private methods
+
+private extension AppDelegate {
+    func initializeRootView() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UINavigationController()
+        window?.makeKeyAndVisible()
+        
+        appCoordinator.start()
+    }
+}
+
 

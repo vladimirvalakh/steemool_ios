@@ -8,6 +8,8 @@
 import UIKit
 
 class ContinueWithAccountButton: UIButton {
+    
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -18,6 +20,8 @@ class ContinueWithAccountButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupApearance() {
         self.backgroundColor = .white

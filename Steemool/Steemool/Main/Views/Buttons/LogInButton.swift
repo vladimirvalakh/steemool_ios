@@ -8,6 +8,8 @@
 import UIKit
 
 class LogInButton: UIButton {
+    
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -19,13 +21,14 @@ class LogInButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Methods
+    
     private func setupApearance() {
         self.frame = CGRect(x: 0, y: 0, width: 358, height: 52)
         self.clipsToBounds = true
         self.layer.cornerRadius = 13.HAdapted
         self.applyGradient(colours: [.yellow, .blue])
     }
-    
 }
 
 private extension UIButton {
