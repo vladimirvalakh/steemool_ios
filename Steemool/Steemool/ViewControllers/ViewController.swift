@@ -25,6 +25,13 @@ class ViewController: UIViewController {
     private lazy var sayingsCollectionViewFrameSpacing = (view.bounds.width - sayingsCollectionViewWidth) / 2
     
     private let backgroundImageView = UIImageView(image: UIImage(named: "sayingsViewBackground"))
+    
+    private let continueButton: LogInButton = {
+        let continueButton = LogInButton()
+        continueButton.setTitle("Продолжить", for: .normal)
+        
+        return continueButton
+    }()
 
     // MARK: - Views
     
@@ -128,6 +135,7 @@ private extension ViewController {
         view.addSubview(backgroundImageView)
         view.addSubview(titleLabel)
         view.addSubview(sayingsCollectionView)
+        view.addSubview(continueButton)
     }
     
     func configureLayout() {
@@ -147,6 +155,13 @@ private extension ViewController {
             make.bottom.equalToSuperview().offset(-187.VAdapted)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(465.VAdapted)
+        }
+        
+        continueButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(32.HAdapted)
+            make.bottom.equalToSuperview().offset(-42.VAdapted)
+            make.height.equalTo(52.VAdapted)
         }
     }
 }
