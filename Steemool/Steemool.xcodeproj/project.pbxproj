@@ -22,6 +22,7 @@
 		85B8463F2861CC7A00904D84 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463C2861CC7A00904D84 /* SF-Pro.ttf */; };
 		85B846402861CC7A00904D84 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */; };
 		85B846412861CC7A00904D84 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */; };
+		85B846452861CD9500904D84 /* SayingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846442861CD9500904D84 /* SayingsCollectionViewCell.swift */; };
 		AB8692C6C82D28AE016FD324 /* Pods_Steemool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A1E160DC7C76D0825B4124 /* Pods_Steemool.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		85B8463C2861CC7A00904D84 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		85B846442861CD9500904D84 /* SayingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A3A1E160DC7C76D0825B4124 /* Pods_Steemool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Steemool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8DD6751282B1617567AFED /* Pods-Steemool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steemool.debug.xcconfig"; path = "Target Support Files/Pods-Steemool/Pods-Steemool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 				4F42540A285C76630065741B /* Services */,
 				4F4253E0285A60F50065741B /* Application */,
 				4F4253E1285A61010065741B /* ViewControllers */,
+				85B846422861CD6A00904D84 /* Views */,
 				4F4253E3285A64F50065741B /* Library */,
 				4F4253E2285A612E0065741B /* Resources */,
 			);
@@ -204,6 +207,22 @@
 				85B8463C2861CC7A00904D84 /* SF-Pro.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		85B846422861CD6A00904D84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				85B846432861CD7D00904D84 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		85B846432861CD7D00904D84 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				85B846442861CD9500904D84 /* SayingsCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +344,7 @@
 			files = (
 				4F42540F285C80600065741B /* Saying.swift in Sources */,
 				4F425404285A69290065741B /* Dimension.swift in Sources */,
+				85B846452861CD9500904D84 /* SayingsCollectionViewCell.swift in Sources */,
 				4F4253D1285A609D0065741B /* ViewController.swift in Sources */,
 				4F4253CD285A609D0065741B /* AppDelegate.swift in Sources */,
 				4F425405285A69290065741B /* Device.swift in Sources */,
