@@ -23,6 +23,10 @@
 		85B846402861CC7A00904D84 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */; };
 		85B846412861CC7A00904D84 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */; };
 		85B846452861CD9500904D84 /* SayingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846442861CD9500904D84 /* SayingsCollectionViewCell.swift */; };
+		85B8464C2861D3DA00904D84 /* UserAutorizationDataTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8464B2861D3DA00904D84 /* UserAutorizationDataTextField.swift */; };
+		85B8464E2861D3FD00904D84 /* LogInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8464D2861D3FD00904D84 /* LogInButton.swift */; };
+		85B846502861D41700904D84 /* ContinueWithAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8464F2861D41700904D84 /* ContinueWithAccountButton.swift */; };
+		85B846522861D44500904D84 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846512861D44500904D84 /* AutorizationViewController.swift */; };
 		AB8692C6C82D28AE016FD324 /* Pods_Steemool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A1E160DC7C76D0825B4124 /* Pods_Steemool.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		85B846442861CD9500904D84 /* SayingsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingsCollectionViewCell.swift; sourceTree = "<group>"; };
+		85B8464B2861D3DA00904D84 /* UserAutorizationDataTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAutorizationDataTextField.swift; sourceTree = "<group>"; };
+		85B8464D2861D3FD00904D84 /* LogInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInButton.swift; sourceTree = "<group>"; };
+		85B8464F2861D41700904D84 /* ContinueWithAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueWithAccountButton.swift; sourceTree = "<group>"; };
+		85B846512861D44500904D84 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
 		A3A1E160DC7C76D0825B4124 /* Pods_Steemool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Steemool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8DD6751282B1617567AFED /* Pods-Steemool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steemool.debug.xcconfig"; path = "Target Support Files/Pods-Steemool/Pods-Steemool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4F4253D0285A609D0065741B /* ViewController.swift */,
+				85B846512861D44500904D84 /* AutorizationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -212,6 +221,8 @@
 		85B846422861CD6A00904D84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				85B846492861D3B700904D84 /* TextFields */,
+				85B8464A2861D3C700904D84 /* Buttons */,
 				85B846432861CD7D00904D84 /* Cells */,
 			);
 			path = Views;
@@ -223,6 +234,23 @@
 				85B846442861CD9500904D84 /* SayingsCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		85B846492861D3B700904D84 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				85B8464B2861D3DA00904D84 /* UserAutorizationDataTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		85B8464A2861D3C700904D84 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				85B8464D2861D3FD00904D84 /* LogInButton.swift */,
+				85B8464F2861D41700904D84 /* ContinueWithAccountButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,11 +374,15 @@
 				4F425404285A69290065741B /* Dimension.swift in Sources */,
 				85B846452861CD9500904D84 /* SayingsCollectionViewCell.swift in Sources */,
 				4F4253D1285A609D0065741B /* ViewController.swift in Sources */,
+				85B846502861D41700904D84 /* ContinueWithAccountButton.swift in Sources */,
 				4F4253CD285A609D0065741B /* AppDelegate.swift in Sources */,
+				85B8464E2861D3FD00904D84 /* LogInButton.swift in Sources */,
 				4F425405285A69290065741B /* Device.swift in Sources */,
 				4F425403285A69290065741B /* AdaptiveLayoutHelper.swift in Sources */,
 				4F425401285A69290065741B /* Int.swift in Sources */,
 				4F42540C285C76950065741B /* SayingsService.swift in Sources */,
+				85B8464C2861D3DA00904D84 /* UserAutorizationDataTextField.swift in Sources */,
+				85B846522861D44500904D84 /* AutorizationViewController.swift in Sources */,
 				4F425402285A69290065741B /* CGFloat.swift in Sources */,
 				4F425400285A69290065741B /* Array.swift in Sources */,
 			);
