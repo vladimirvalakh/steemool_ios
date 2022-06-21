@@ -19,6 +19,9 @@
 		4F425405285A69290065741B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253FD285A69290065741B /* Device.swift */; };
 		4F42540C285C76950065741B /* SayingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42540B285C76950065741B /* SayingsService.swift */; };
 		4F42540F285C80600065741B /* Saying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42540E285C80600065741B /* Saying.swift */; };
+		85B8463F2861CC7A00904D84 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463C2861CC7A00904D84 /* SF-Pro.ttf */; };
+		85B846402861CC7A00904D84 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */; };
+		85B846412861CC7A00904D84 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */; };
 		AB8692C6C82D28AE016FD324 /* Pods_Steemool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3A1E160DC7C76D0825B4124 /* Pods_Steemool.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		4F42540B285C76950065741B /* SayingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingsService.swift; sourceTree = "<group>"; };
 		4F42540E285C80600065741B /* Saying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saying.swift; sourceTree = "<group>"; };
 		5AF4C0D12270EE6A18D5FEBE /* Pods-Steemool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steemool.release.xcconfig"; path = "Target Support Files/Pods-Steemool/Pods-Steemool.release.xcconfig"; sourceTree = "<group>"; };
+		85B8463C2861CC7A00904D84 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
+		85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		A3A1E160DC7C76D0825B4124 /* Pods_Steemool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Steemool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8DD6751282B1617567AFED /* Pods-Steemool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steemool.debug.xcconfig"; path = "Target Support Files/Pods-Steemool/Pods-Steemool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +121,7 @@
 		4F4253E2285A612E0065741B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				85B8463B2861CC6500904D84 /* Fonts */,
 				4F4253D5285A609F0065741B /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -189,6 +196,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		85B8463B2861CC6500904D84 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */,
+				85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */,
+				85B8463C2861CC7A00904D84 /* SF-Pro.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,7 +266,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85B846402861CC7A00904D84 /* SF-Pro-Text-Semibold.otf in Resources */,
+				85B846412861CC7A00904D84 /* SF-Pro-Text-Regular.otf in Resources */,
 				4F4253D9285A609F0065741B /* LaunchScreen.storyboard in Resources */,
+				85B8463F2861CC7A00904D84 /* SF-Pro.ttf in Resources */,
 				4F4253D6285A609F0065741B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
