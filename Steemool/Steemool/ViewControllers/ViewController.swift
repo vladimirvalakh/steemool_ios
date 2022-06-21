@@ -159,7 +159,7 @@ private extension ViewController {
         
         continueButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(32.HAdapted)
+            make.leading.equalToSuperview().offset(16.HAdapted)
             make.bottom.equalToSuperview().offset(-42.VAdapted)
             make.height.equalTo(52.VAdapted)
         }
