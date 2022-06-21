@@ -61,13 +61,22 @@ private extension AutorizationViewController {
     }
     
     private func setupNavigationBar() {
-        let rightBarButtonItem = UIBarButtonItem()
-        rightBarButtonItem.title = "Пропустить >"
-        rightBarButtonItem.tintColor = UIColor(red: 0.639, green: 0.416, blue: 0.98, alpha: 1)
+        let button: UIButton = UIButton(type: .custom)
+        
+        button.setTitle("Пропустить ", for: .normal)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        
+        let color = UIColor(red: 0.639, green: 0.416, blue: 0.98, alpha: 1)
+        button.tintColor = color
+        button.setTitleColor(color, for: .normal)
+        
+        button.contentMode = .right
+        button.semanticContentAttribute = .forceRightToLeft
         
         if let font = UIFont(name: "SFProText-Regular", size: 17) {
-            UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+            button.titleLabel?.font = font
         }
+        let rightBarButtonItem = UIBarButtonItem(customView: button)
         
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
