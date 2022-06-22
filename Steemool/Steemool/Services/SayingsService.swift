@@ -9,12 +9,12 @@ import Foundation
 
 private struct SayingResponse: Decodable {
     let status: String
-    let data: Saying?
+    let data: Saying
 }
 
 private struct SayingsResponse: Decodable {
     let status: String
-    let data: [Saying]?
+    let data: [Saying]
 }
 
 fileprivate enum SayingsLink {
