@@ -1,5 +1,5 @@
 //
-//  AutorizationViewController.swift
+//  AuthorizationViewController.swift
 //  Steemool
 //
 //  Created by Екатерина Неделько on 21.06.22.
@@ -8,14 +8,14 @@
 import UIKit
 import SnapKit
 
-class AutorizationViewController: UIViewController {
+class AuthorizationViewController: UIViewController {
     
     // MARK: - Private properties
     
     private var showPassword = false
     
-    private var emailTextField = UserAutorizationDataTextField()
-    private var passwordTextField = UserAutorizationDataTextField()
+    private var emailTextField = UserAuthorizationDataTextField()
+    private var passwordTextField = UserAuthorizationDataTextField()
     
     private var helpLabel = UILabel()
     
@@ -50,7 +50,7 @@ class AutorizationViewController: UIViewController {
 
 // MARK: - Appearance Methods
 
-private extension AutorizationViewController {
+private extension AuthorizationViewController {
     private func setupView() {
         setupNavigationBar()
         

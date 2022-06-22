@@ -1,5 +1,5 @@
 //
-//  UserAutorizationDataTextField.swift
+//  UserAuthorizationDataTextField.swift
 //  Steemool
 //
 //  Created by Екатерина Неделько on 21.06.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserAutorizationDataTextField: UITextField {
+class UserAuthorizationDataTextField: UITextField {
 
     // MARK: - Initialisation
     
