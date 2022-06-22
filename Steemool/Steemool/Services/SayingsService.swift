@@ -9,12 +9,12 @@ import Foundation
 
 private struct SayingResponse: Decodable {
     let status: String
-    let saying: Saying
+    let data: Saying?
 }
 
 private struct SayingsResponse: Decodable {
     let status: String
-    let sayings: [Saying]
+    let data: [Saying]?
 }
 
 fileprivate enum SayingsLink {
@@ -96,12 +96,13 @@ extension SayingsService: SayingsServiceProtocol {
             
             let decoder = JSONDecoder()
             
-            guard let sayingsResponse = try? decoder.decode(SayingsResponse.self, from: data) else {
-                completion(nil, error)
-                return
+            do {
+                let sayingsResponse = try decoder.decode(SayingsResponse.self, from: data)
+                completion(sayingsResponse.data, nil)
             }
-            
-            completion(sayingsResponse.sayings, nil)
+            catch let error {
+                completion(nil, error)
+            }
         }
     }
     
@@ -115,12 +116,13 @@ extension SayingsService: SayingsServiceProtocol {
             guard let data = data else { return }
             
             let decoder = JSONDecoder()
-            guard let sayingResponse = try? decoder.decode(SayingResponse.self, from: data) else {
-                completion(nil, error)
-                return
+            do {
+                let sayingResponse = try decoder.decode(SayingResponse.self, from: data)
+                completion(sayingResponse.data, nil)
             }
-            
-            completion(sayingResponse.saying, nil)
+            catch let error {
+                completion(nil, error)
+            }
         }
     }
     
@@ -134,12 +136,13 @@ extension SayingsService: SayingsServiceProtocol {
             guard let data = data else { return }
             
             let decoder = JSONDecoder()
-            guard let sayingResponse = try? decoder.decode(SayingResponse.self, from: data) else {
-                completion(nil, error)
-                return
+            do {
+                let sayingResponse = try decoder.decode(SayingResponse.self, from: data)
+                completion(sayingResponse.data, nil)
             }
-            
-            completion(sayingResponse.saying, nil)
+            catch let error {
+                completion(nil, error)
+            }
         }
     }
 }
