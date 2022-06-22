@@ -38,11 +38,13 @@ class ViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         var titleLabel = UILabel()
         titleLabel.textColor = .white
-        titleLabel.font = UIFont(name: "SFPro-Bold", size: CGFloat(28).adaptedFontSize)
         titleLabel.numberOfLines = 0
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.font = UIFont(name: "SFPro-Bold", size: CGFloat(28).adaptedFontSize)
         titleLabel.frame = CGRect(x: 0, y: 0, width: 358.HAdapted, height: 68.VAdapted)
+        titleLabel.minimumScaleFactor = 0.5
         
-        titleLabel.attributedText = NSMutableAttributedString(string: "Начни свой день c цитаты!", attributes: [NSAttributedString.Key.kern: 0.36, NSAttributedString.Key.paragraphStyle: NSMutableParagraphStyle()])
+        titleLabel.text = "Начни свой день c цитаты!"
 
         return titleLabel
     }()
