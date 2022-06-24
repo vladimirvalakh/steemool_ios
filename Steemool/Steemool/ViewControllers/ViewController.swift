@@ -63,6 +63,11 @@ class ViewController: UIViewController {
         sayingsCollectionView.dataSource = self
         sayingsCollectionView.delegate = self
         
+        sayingsCollectionView.contentInset = UIEdgeInsets(top: 0,
+                                                          left: sayingsCollectionViewSideInset,
+                                                          bottom: 0,
+                                                          right: sayingsCollectionViewSideInset);
+        
         sayingsCollectionView.register(SayingsCollectionViewCell.self,
                                        forCellWithReuseIdentifier: "SayingsCell")
  
