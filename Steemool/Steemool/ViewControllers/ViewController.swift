@@ -161,7 +161,7 @@ private extension ViewController {
         sayingsCollectionView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-187.VAdapted)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(465.VAdapted)
+            make.height.equalTo(sayingsCollectionViewHeight)
         }
         
         continueButton.snp.makeConstraints { make in

@@ -19,6 +19,8 @@
 		4F425405285A69290065741B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253FD285A69290065741B /* Device.swift */; };
 		4F42540C285C76950065741B /* SayingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42540B285C76950065741B /* SayingsService.swift */; };
 		4F42540F285C80600065741B /* Saying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42540E285C80600065741B /* Saying.swift */; };
+		859A4B2A2869C3D4008BF432 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */; };
+		859A4B2C2869C433008BF432 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A4B2B2869C433008BF432 /* UIView+Extensions.swift */; };
 		85B8463F2861CC7A00904D84 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463C2861CC7A00904D84 /* SF-Pro.ttf */; };
 		85B846402861CC7A00904D84 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */; };
 		85B846412861CC7A00904D84 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */; };
@@ -33,7 +35,7 @@
 		85B8465D2861ECB300904D84 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8465C2861ECB300904D84 /* Presentable.swift */; };
 		85B8465F2861ED0000904D84 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8465E2861ED0000904D84 /* Routable.swift */; };
 		85B846652861FAE300904D84 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846642861FAE300904D84 /* Router.swift */; };
-		85B846682861FD2C00904D84 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846672861FD2C00904D84 /* UIApplication+Extension.swift */; };
+		85B846682861FD2C00904D84 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846672861FD2C00904D84 /* UIApplication+Extensions.swift */; };
 		85B8466A2862006200904D84 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B846692862006200904D84 /* MainCoordinator.swift */; };
 		85B8466C2862009900904D84 /* MainCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8466B2862009900904D84 /* MainCoordinatorOutput.swift */; };
 		85B8466F286200FC00904D84 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B8466E286200FC00904D84 /* Closures.swift */; };
@@ -58,6 +60,8 @@
 		4F42540B285C76950065741B /* SayingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingsService.swift; sourceTree = "<group>"; };
 		4F42540E285C80600065741B /* Saying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saying.swift; sourceTree = "<group>"; };
 		5AF4C0D12270EE6A18D5FEBE /* Pods-Steemool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steemool.release.xcconfig"; path = "Target Support Files/Pods-Steemool/Pods-Steemool.release.xcconfig"; sourceTree = "<group>"; };
+		859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		859A4B2B2869C433008BF432 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		85B8463C2861CC7A00904D84 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -72,7 +76,7 @@
 		85B8465C2861ECB300904D84 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		85B8465E2861ED0000904D84 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		85B846642861FAE300904D84 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		85B846672861FD2C00904D84 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		85B846672861FD2C00904D84 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		85B846692862006200904D84 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		85B8466B2862009900904D84 /* MainCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorOutput.swift; sourceTree = "<group>"; };
 		85B8466E286200FC00904D84 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		4F4253E3285A64F50065741B /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				85B846422861CD6A00904D84 /* Views */,
 				85B846662861FCE800904D84 /* Extensions */,
 				85B846612861FAB300904D84 /* Helpers */,
 				85B846552861EBEA00904D84 /* Base */,
@@ -305,7 +310,6 @@
 		85B846602861F66000904D84 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				85B846422861CD6A00904D84 /* Views */,
 				85B846692862006200904D84 /* MainCoordinator.swift */,
 				85B8466B2862009900904D84 /* MainCoordinatorOutput.swift */,
 				85B846702862015700904D84 /* MainModuleConfigurator.swift */,
@@ -324,7 +328,9 @@
 		85B846662861FCE800904D84 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				85B846672861FD2C00904D84 /* UIApplication+Extension.swift */,
+				85B846672861FD2C00904D84 /* UIApplication+Extensions.swift */,
+				859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */,
+				859A4B2B2869C433008BF432 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F42540F285C80600065741B /* Saying.swift in Sources */,
+				859A4B2C2869C433008BF432 /* UIView+Extensions.swift in Sources */,
 				85B84673286202FD00904D84 /* DeepLinkOption.swift in Sources */,
 				4F425404285A69290065741B /* Dimension.swift in Sources */,
 				85B846452861CD9500904D84 /* SayingsCollectionViewCell.swift in Sources */,
@@ -466,9 +473,10 @@
 				85B846572861EBFE00904D84 /* BaseCoordinator.swift in Sources */,
 				85B8466C2862009900904D84 /* MainCoordinatorOutput.swift in Sources */,
 				85B8466A2862006200904D84 /* MainCoordinator.swift in Sources */,
-				85B846682861FD2C00904D84 /* UIApplication+Extension.swift in Sources */,
+				85B846682861FD2C00904D84 /* UIApplication+Extensions.swift in Sources */,
 				85B8464E2861D3FD00904D84 /* LogInButton.swift in Sources */,
 				4F425405285A69290065741B /* Device.swift in Sources */,
+				859A4B2A2869C3D4008BF432 /* UIImage+Extensions.swift in Sources */,
 				85B846652861FAE300904D84 /* Router.swift in Sources */,
 				4F425403285A69290065741B /* AdaptiveLayoutHelper.swift in Sources */,
 				4F425401285A69290065741B /* Int.swift in Sources */,
