@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F4253CD285A609D0065741B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253CC285A609D0065741B /* AppDelegate.swift */; };
-		4F4253D1285A609D0065741B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253D0285A609D0065741B /* ViewController.swift */; };
+		4F4253D1285A609D0065741B /* SayingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253D0285A609D0065741B /* SayingsViewController.swift */; };
 		4F4253D6285A609F0065741B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4253D5285A609F0065741B /* Assets.xcassets */; };
 		4F4253D9285A609F0065741B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4253D7285A609F0065741B /* LaunchScreen.storyboard */; };
 		4F425400285A69290065741B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253F6285A69290065741B /* Array.swift */; };
@@ -47,7 +47,7 @@
 /* Begin PBXFileReference section */
 		4F4253C9285A609D0065741B /* Steemool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Steemool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4253CC285A609D0065741B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F4253D0285A609D0065741B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F4253D0285A609D0065741B /* SayingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingsViewController.swift; sourceTree = "<group>"; };
 		4F4253D5285A609F0065741B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F4253D8285A609F0065741B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F4253DA285A609F0065741B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		4F4253E1285A61010065741B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F4253D0285A609D0065741B /* ViewController.swift */,
+				4F4253D0285A609D0065741B /* SayingsViewController.swift */,
 				85B846512861D44500904D84 /* AuthorizationViewController.swift */,
 			);
 			path = ViewControllers;
@@ -465,7 +465,7 @@
 				85B84673286202FD00904D84 /* DeepLinkOption.swift in Sources */,
 				4F425404285A69290065741B /* Dimension.swift in Sources */,
 				85B846452861CD9500904D84 /* SayingsCollectionViewCell.swift in Sources */,
-				4F4253D1285A609D0065741B /* ViewController.swift in Sources */,
+				4F4253D1285A609D0065741B /* SayingsViewController.swift in Sources */,
 				85B846502861D41700904D84 /* ContinueWithAccountButton.swift in Sources */,
 				85B8465B2861EC7800904D84 /* Coordinatable.swift in Sources */,
 				4F4253CD285A609D0065741B /* AppDelegate.swift in Sources */,

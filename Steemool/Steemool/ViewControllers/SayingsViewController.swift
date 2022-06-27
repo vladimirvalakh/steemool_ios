@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SayingsViewController.swift
 //  Steemool
 //
 //  Created by Evgeniy Petlitskiy on 15.06.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SayingsViewController: UIViewController {
     
     // MARK: - Private properties
     
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
 
 // MARK: - Appearance Methods
 
-private extension ViewController {
+private extension SayingsViewController {
     func setupAppearance() {
         view.backgroundColor = .white
         
@@ -173,7 +173,7 @@ private extension ViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension SayingsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sayingsData = sayingsData else { return 0 }
         
@@ -190,13 +190,13 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension SayingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: sayingsCollectionViewWidth, height: sayingsCollectionViewHeight)
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension SayingsViewController: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard let sayingsData = sayingsData else { return }
         
