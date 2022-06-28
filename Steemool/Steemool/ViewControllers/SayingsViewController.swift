@@ -39,7 +39,6 @@ class SayingsViewController: UIViewController {
         var titleLabel = UILabel()
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 0
-        titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: "SFPro-Bold", size: CGFloat(28).adaptedFontSize)
         titleLabel.frame = CGRect(x: 0, y: 0, width: 240.HAdapted, height: 68.VAdapted)
@@ -155,11 +154,10 @@ private extension SayingsViewController {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(75.HAdapted)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(92.VAdapted)
-            make.height.equalTo(68.VAdapted)
         }
         
         sayingsCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(22.VAdapted)
             make.bottom.equalToSuperview().offset(-125.VAdapted)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(sayingsCollectionViewHeight)

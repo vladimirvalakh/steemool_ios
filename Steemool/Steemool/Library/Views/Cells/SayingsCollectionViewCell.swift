@@ -62,11 +62,13 @@ private extension SayingsCollectionViewCell {
         sayingsLayerView.layer.masksToBounds = false
         
         sayingsTextLabel.numberOfLines = 0
+        sayingsTextLabel.minimumScaleFactor = 0.5
         sayingsTextLabel.adjustsFontSizeToFitWidth = true
         sayingsTextLabel.textAlignment = .left
         sayingsTextLabel.font = UIFont(name: "SFPro-Medium", size: CGFloat(16).adaptedFontSize)
         
         sayingsAuthorLabel.numberOfLines = 0
+        sayingsTextLabel.minimumScaleFactor = 0.5
         sayingsAuthorLabel.adjustsFontSizeToFitWidth = true
         sayingsAuthorLabel.textAlignment = .right
         sayingsAuthorLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
@@ -94,10 +96,9 @@ private extension SayingsCollectionViewCell {
         }
         
         sayingsTextLabel.snp.makeConstraints{ make in
-            make.centerX.equalToSuperview()
-            make.leading.equalTo(16.HAdapted)
+            make.leading.trailing.equalToSuperview().inset(16.HAdapted)
             make.bottom.equalTo(-40.VAdapted)
-            make.top.equalTo(sayingsImageView.snp.bottom)
+            make.top.equalTo(sayingsImageView.snp.bottom).offset(10.VAdapted)
         }
         
         sayingsAuthorLabel.snp.makeConstraints{ make in
