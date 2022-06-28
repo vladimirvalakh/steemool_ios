@@ -17,10 +17,10 @@ class SayingsViewController: UIViewController {
     
     private var currentPage = 0
     
-    private lazy var sayingsCollectionViewHeight = 465.VAdapted
-    private lazy var sayingsCollectionViewWidth = 310.HAdapted
+    private lazy var sayingsCollectionViewHeight = 535.VAdapted
+    private lazy var sayingsCollectionViewWidth = 317.HAdapted
     
-    private lazy var sayingsCollectionViewSideInset = 20.HAdapted
+    private lazy var sayingsCollectionViewSideInset = 24.HAdapted
     
     private lazy var sayingsCollectionViewFrameSpacing = (view.bounds.width - sayingsCollectionViewWidth) / 2
     
@@ -40,8 +40,9 @@ class SayingsViewController: UIViewController {
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 0
         titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: "SFPro-Bold", size: CGFloat(28).adaptedFontSize)
-        titleLabel.frame = CGRect(x: 0, y: 0, width: 358.HAdapted, height: 68.VAdapted)
+        titleLabel.frame = CGRect(x: 0, y: 0, width: 240.HAdapted, height: 68.VAdapted)
         titleLabel.minimumScaleFactor = 0.5
         
         titleLabel.text = "Начни свой день c цитаты!"
@@ -152,14 +153,14 @@ private extension SayingsViewController {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16.HAdapted)
+            make.leading.equalToSuperview().offset(75.HAdapted)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(92.VAdapted)
             make.height.equalTo(68.VAdapted)
         }
         
         sayingsCollectionView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-187.VAdapted)
+            make.bottom.equalToSuperview().offset(-125.VAdapted)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(sayingsCollectionViewHeight)
         }
