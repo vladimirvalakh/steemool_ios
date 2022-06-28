@@ -172,6 +172,8 @@ private extension SayingsViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension SayingsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sayingsData = sayingsData else { return 0 }
@@ -189,11 +191,15 @@ extension SayingsViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension SayingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: sayingsCollectionViewWidth, height: sayingsCollectionViewHeight)
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension SayingsViewController: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

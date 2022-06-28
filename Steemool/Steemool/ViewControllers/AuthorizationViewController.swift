@@ -14,6 +14,8 @@ class AuthorizationViewController: UIViewController {
     
     private var showPassword = false
     
+    // MARK: - Views
+    
     private lazy var emailTextField: UserAuthorizationDataTextField = {
         let emailTextField = UserAuthorizationDataTextField()
         emailTextField.placeholder = "Email"
