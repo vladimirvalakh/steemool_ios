@@ -14,12 +14,61 @@ class AuthorizationViewController: UIViewController {
     
     private var showPassword = false
     
-    private var emailTextField = UserAuthorizationDataTextField()
-    private var passwordTextField = UserAuthorizationDataTextField()
+    private lazy var emailTextField: UserAuthorizationDataTextField = {
+        let emailTextField = UserAuthorizationDataTextField()
+        emailTextField.placeholder = "Email"
+        
+        let emailView = UIView(frame: CGRect(x: 0, y: 0, width: 33.HAdapted, height: 22.HAdapted))
+        let emailImageView = UIImageView(image: UIImage(systemName: "person"))
+        emailImageView.frame = CGRect(x: 10, y: 0, width: 19.HAdapted, height: 22.HAdapted)
+        emailImageView.contentMode = .scaleAspectFit
+        emailView.addSubview(emailImageView)
+
+        emailTextField.leftView = emailView
+        emailTextField.leftViewMode = .always
+        
+        return emailTextField
+    }()
     
-    private var helpLabel = UILabel()
+    private lazy var passwordTextField: UserAuthorizationDataTextField = {
+        let passwordTextField = UserAuthorizationDataTextField()
+        passwordTextField.placeholder = "Пароль"
+
+        let passwordView = UIView(frame: CGRect(x: 0, y: 0, width: 33.HAdapted, height: 22.HAdapted))
+        let passwordImageView = UIImageView(image: UIImage(systemName: "lock"))
+        passwordImageView.frame = CGRect(x: 10, y: 0, width: 19.HAdapted, height: 22.HAdapted)
+        passwordImageView.contentMode = .scaleAspectFit
+        passwordView.addSubview(passwordImageView)
+
+        passwordTextField.leftView = passwordView
+        passwordTextField.leftViewMode = .always
+        
+        let showPasswordButton = UIButton(type: .custom)
+        showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        showPasswordButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
+        showPasswordButton.frame = CGRect(x: -10, y: 0, width: CGFloat(17.HAdapted), height: CGFloat(17.HAdapted))
+        showPasswordButton.addTarget(self, action: #selector(self.toggleShowPasswordButtonView), for: .touchUpInside)
+        showPasswordButton.contentMode = .center
+        
+        passwordTextField.rightView = showPasswordButton
+        passwordTextField.rightViewMode = .always
+
+        passwordTextField.isSecureTextEntry = true
+        
+        return passwordTextField
+    }()
     
-    private var actionButtonsStackView: UIStackView = {
+    private lazy var helpLabel: UILabel = {
+        let helpLabel = UILabel()
+        helpLabel.text = "Забыли пароль?"
+        helpLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        helpLabel.font = UIFont(name: "SFPro-Regular", size: CGFloat(13).adaptedFontSize)
+        helpLabel.textAlignment = .right
+        
+        return helpLabel
+    }()
+    
+    private lazy var actionButtonsStackView: UIStackView = {
         let actionButtonsStackView = UIStackView()
         actionButtonsStackView.axis = .vertical
         actionButtonsStackView.distribution = .fillEqually
@@ -28,19 +77,57 @@ class AuthorizationViewController: UIViewController {
         return actionButtonsStackView
     }()
     
-    private let signInHandleButton = LogInButton()
-    private let logInHandleButton = LogInButton()
+    private lazy var signInHandleButton: LogInButton = {
+        let signInHandleButton = LogInButton()
+        signInHandleButton.setTitle("Войти", for: .normal)
+        
+        return signInHandleButton
+    }()
     
-    private var continueWithAppleHandleButton = ContinueWithAccountButton()
-    private var continueWithGoogleHandleButton = ContinueWithAccountButton()
-    private var continueWithFacebookHandleButton = ContinueWithAccountButton()
-    private var continueWithVKHandleButton = ContinueWithAccountButton()
+    private lazy var logInHandleButton: LogInButton = {
+        let logInHandleButton = LogInButton()
+        logInHandleButton.setTitle("Зарегистрироваться", for: .normal)
+        
+        return logInHandleButton
+    }()
+    
+    private var continueWithAppleHandleButton: ContinueWithAccountButton = {
+        let continueWithAppleHandleButton = ContinueWithAccountButton()
+        continueWithAppleHandleButton.setTitle("Войти через Apple", for: .normal)
+        continueWithAppleHandleButton.setImage(UIImage(systemName: "applelogo"), for: .normal)
+        
+        return continueWithAppleHandleButton
+    }()
+    
+    private var continueWithGoogleHandleButton: ContinueWithAccountButton = {
+        let continueWithGoogleHandleButton = ContinueWithAccountButton()
+        continueWithGoogleHandleButton.setTitle("Войти через Google", for: .normal)
+        continueWithGoogleHandleButton.setImage( UIImage(named: "googlelogo")?.resizedImage(Size: CGSize(width: 22.HAdapted, height: 22.HAdapted)), for: .normal)
+        
+        return continueWithGoogleHandleButton
+    }()
+    
+    private var continueWithFacebookHandleButton: ContinueWithAccountButton = {
+        let continueWithFacebookHandleButton = ContinueWithAccountButton()
+        continueWithFacebookHandleButton.setTitle("Войти через Facebook", for: .normal)
+        continueWithFacebookHandleButton.setImage( UIImage(named: "facebooklogo")?.resizedImage(Size: CGSize(width: 18.HAdapted, height: 18.HAdapted)), for: .normal)
+        
+        return continueWithFacebookHandleButton
+    }()
+    
+    private var continueWithVKHandleButton: ContinueWithAccountButton = {
+        let continueWithVKHandleButton = ContinueWithAccountButton()
+        continueWithVKHandleButton.setTitle("Войти через VK", for: .normal)
+        continueWithVKHandleButton.setImage( UIImage(named: "vklogo")?.resizedImage(Size: CGSize(width: 18.HAdapted, height: 18.HAdapted)), for: .normal)
+        
+        return continueWithVKHandleButton
+    }()
     
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupNavigationBar()
         
         setupAppearance()
         addSubviews()
@@ -51,16 +138,7 @@ class AuthorizationViewController: UIViewController {
 // MARK: - Appearance Methods
 
 private extension AuthorizationViewController {
-    private func setupView() {
-        setupNavigationBar()
-        
-        setupTextFields()
-        setupHelpLabel()
-        
-        setupActionButtons()
-    }
-    
-    private func setupNavigationBar() {
+   private func setupNavigationBar() {
         let button: UIButton = UIButton(type: .custom)
         
         button.setTitle("Пропустить ", for: .normal)
@@ -81,70 +159,10 @@ private extension AuthorizationViewController {
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    private func setupTextFields() {
-        emailTextField.placeholder = "Email"
-        
-        let emailView = UIView(frame: CGRect(x: 0, y: 0, width: 33.HAdapted, height: 22.HAdapted))
-        let emailImageView = UIImageView(image: UIImage(systemName: "person"))
-        emailImageView.frame = CGRect(x: 10, y: 0, width: 19.HAdapted, height: 22.HAdapted)
-        emailImageView.contentMode = .scaleAspectFit
-        emailView.addSubview(emailImageView)
-
-        emailTextField.leftView = emailView
-        emailTextField.leftViewMode = .always
-        
-        passwordTextField.placeholder = "Пароль"
-
-        let passwordView = UIView(frame: CGRect(x: 0, y: 0, width: 33.HAdapted, height: 22.HAdapted))
-        let passwordImageView = UIImageView(image: UIImage(systemName: "lock"))
-        passwordImageView.frame = CGRect(x: 10, y: 0, width: 19.HAdapted, height: 22.HAdapted)
-        passwordImageView.contentMode = .scaleAspectFit
-        passwordView.addSubview(passwordImageView)
-
-        passwordTextField.leftView = passwordView
-        passwordTextField.leftViewMode = .always
- 
-        let showPasswordButton = UIButton(type: .custom)
-        showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-        showPasswordButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
-        showPasswordButton.frame = CGRect(x: -10, y: 0, width: CGFloat(17.HAdapted), height: CGFloat(17.HAdapted))
-        showPasswordButton.addTarget(self, action: #selector(self.toggleShowPasswordButtonView), for: .touchUpInside)
-        showPasswordButton.contentMode = .center
-        
-        passwordTextField.rightView = showPasswordButton
-        passwordTextField.rightViewMode = .always
-
-        passwordTextField.isSecureTextEntry = true
-    }
-    
     @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
         showPassword = !showPassword
         passwordTextField.isSecureTextEntry = showPassword
         sender.setImage(UIImage(systemName: showPassword ? "eye" : "eye.slash") ?? UIImage(), for: .normal)
-    }
-    
-    private func setupHelpLabel() {
-        helpLabel.text = "Забыли пароль?"
-        helpLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
-        helpLabel.font = UIFont(name: "SFPro-Regular", size: CGFloat(13).adaptedFontSize)
-        helpLabel.textAlignment = .right
-    }
-    
-    private func setupActionButtons() {
-        signInHandleButton.setTitle("Войти", for: .normal)
-        logInHandleButton.setTitle("Зарегистрироваться", for: .normal)
-        
-        continueWithAppleHandleButton.setTitle("Войти через Apple", for: .normal)
-        continueWithAppleHandleButton.setImage(UIImage(systemName: "applelogo"), for: .normal)
-        
-        continueWithGoogleHandleButton.setTitle("Войти через Google", for: .normal)
-        continueWithGoogleHandleButton.setImage( UIImage(named: "googlelogo")?.resizedImage(Size: CGSize(width: 22.HAdapted, height: 22.HAdapted)), for: .normal)
-
-        continueWithFacebookHandleButton.setTitle("Войти через Facebook", for: .normal)
-        continueWithFacebookHandleButton.setImage( UIImage(named: "facebooklogo")?.resizedImage(Size: CGSize(width: 18.HAdapted, height: 18.HAdapted)), for: .normal)
-        
-        continueWithVKHandleButton.setTitle("Войти через VK", for: .normal)
-        continueWithVKHandleButton.setImage( UIImage(named: "vklogo")?.resizedImage(Size: CGSize(width: 18.HAdapted, height: 18.HAdapted)), for: .normal)
     }
     
     func setupAppearance() {
