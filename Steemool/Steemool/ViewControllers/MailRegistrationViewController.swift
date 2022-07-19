@@ -244,7 +244,7 @@ private extension MailRegistrationViewController {
     func checkLogInButtonAccessibility() {
         guard let userName = userNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else { return }
         
-        if userName.isEmpty || email.isEmpty || ( password.isEmpty && password.count > 7 ) {
+        if userName.isEmpty || email.isEmpty || password.isEmpty || password.count < 8  {
             logInButton.makeInactive()
             return
         }
