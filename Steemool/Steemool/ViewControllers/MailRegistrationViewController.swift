@@ -28,6 +28,8 @@ class MailRegistrationViewController: UIViewController {
         let userNameTextField = UserAuthorizationDataTextField()
         userNameTextField.placeholder = "Ваше имя"
         
+        userNameTextField.textContentType = .username
+        
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
         userNameTextField.leftView = paddingView
         userNameTextField.leftViewMode = .always
@@ -49,6 +51,10 @@ class MailRegistrationViewController: UIViewController {
         let emailTextField = UserAuthorizationDataTextField()
         emailTextField.placeholder = "Введите адрес электронной почты"
         
+        emailTextField.textContentType = .emailAddress
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
+        
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
         emailTextField.leftView = paddingView
         emailTextField.leftViewMode = .always
@@ -69,6 +75,9 @@ class MailRegistrationViewController: UIViewController {
     private lazy var passwordTextField: UserAuthorizationDataTextField = {
         let passwordTextField = UserAuthorizationDataTextField()
         passwordTextField.placeholder = "Введите пароль"
+        
+        passwordTextField.textContentType = .password
+        passwordTextField.autocapitalizationType = .none
         
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
         passwordTextField.leftView = paddingView
@@ -235,7 +244,7 @@ private extension MailRegistrationViewController {
     func checkLogInButtonAccessibility() {
         guard let userName = userNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else { return }
         
-        if userName.isEmpty || email.isEmpty || password.isEmpty {
+        if userName.isEmpty || email.isEmpty || ( password.isEmpty && password.count > 7 ) {
             logInButton.makeInactive()
             return
         }
@@ -266,6 +275,7 @@ private extension MailRegistrationViewController {
     }
     
     @objc func passwordTextFieldDidChange(_ textField: UITextField) {
+        helpLabel.isHidden = passwordTextField.text?.count ?? 0 > 7
         checkLogInButtonAccessibility()
     }
 }
