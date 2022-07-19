@@ -79,18 +79,21 @@ class AuthorizationViewController: UIViewController {
         return actionButtonsStackView
     }()
     
-    private lazy var signInHandleButton: LogInButton = {
-        let signInHandleButton = LogInButton()
-        signInHandleButton.setTitle("Войти", for: .normal)
+    private lazy var signInButton: LogInButton = {
+        let signInButton = LogInButton()
+        signInButton.setTitle("Войти", for: .normal)
+        signInButton.makeActive()
         
-        return signInHandleButton
+        return signInButton
     }()
     
-    private lazy var logInHandleButton: LogInButton = {
-        let logInHandleButton = LogInButton()
-        logInHandleButton.setTitle("Зарегистрироваться", for: .normal)
+    private lazy var logInButton: LogInButton = {
+        let logInButton = LogInButton()
+        logInButton.setTitle("Зарегистрироваться", for: .normal)
         
-        return logInHandleButton
+        logInButton.addTarget(self, action: #selector(handleLogInButtonTouch), for: .touchUpInside)
+        
+        return logInButton
     }()
     
     private var continueWithAppleHandleButton: ContinueWithAccountButton = {
@@ -143,20 +146,21 @@ private extension AuthorizationViewController {
    private func setupNavigationBar() {
         let button: UIButton = UIButton(type: .custom)
         
-        button.setTitle("Пропустить ", for: .normal)
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .customPurple
+        button.setTitleColor(.customPurple, for: .normal)
         
-        let color = UIColor(red: 0.639, green: 0.416, blue: 0.98, alpha: 1)
-        button.tintColor = color
-        button.setTitleColor(color, for: .normal)
-        
-        button.contentMode = .right
-        button.semanticContentAttribute = .forceRightToLeft
-        
-        if let font = UIFont(name: "SFProText-Regular", size: CGFloat(17).adaptedFontSize) {
-            button.titleLabel?.font = font
-        }
-        let rightBarButtonItem = UIBarButtonItem(customView: button)
+       let fullString = NSMutableAttributedString(string: "Пропустить ")
+       
+       let imageAttachment = NSTextAttachment()
+       imageAttachment.image = UIImage(systemName: "chevron.right")?.withTintColor(.customPurple)
+       
+       let imageString = NSAttributedString(attachment: imageAttachment)
+       
+       fullString.append(imageString)
+       
+       button.setAttributedTitle(fullString, for: .normal)
+       
+       let rightBarButtonItem = UIBarButtonItem(customView: button)
         
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
@@ -168,7 +172,7 @@ private extension AuthorizationViewController {
     }
     
     func setupAppearance() {
-        view.backgroundColor = UIColor(red: 0.815, green: 0.815, blue: 0.815, alpha: 1)
+        view.backgroundColor = .backgroundColor
     }
     
     func addSubviews() {
@@ -179,8 +183,8 @@ private extension AuthorizationViewController {
         
         view.addSubview(actionButtonsStackView)
         
-        actionButtonsStackView.addArrangedSubview(signInHandleButton)
-        actionButtonsStackView.addArrangedSubview(logInHandleButton)
+        actionButtonsStackView.addArrangedSubview(signInButton)
+        actionButtonsStackView.addArrangedSubview(logInButton)
         
         actionButtonsStackView.addArrangedSubview(continueWithAppleHandleButton)
         actionButtonsStackView.addArrangedSubview(continueWithGoogleHandleButton)
@@ -217,3 +221,12 @@ private extension AuthorizationViewController {
         }
     }
 }
+
+// MARK: - Actions
+
+private extension AuthorizationViewController {
+    @objc func handleLogInButtonTouch() {
+        self.navigationController?.pushViewController(MailRegistrationViewController(), animated: true)
+    }
+}
+

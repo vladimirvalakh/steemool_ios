@@ -9,9 +9,17 @@ import UIKit
 
 class LogInButton: UIButton {
     
+    // MARK: - Internal Properties
+    
+    private var status: LogInButtonStatus? {
+        didSet {
+            setupApearance()
+        }
+    }
+    
     // MARK: - Initialization
 
-    override init(frame: CGRect) {
+    init() {
         super.init(frame: .zero)
         
         setupApearance()
@@ -21,14 +29,38 @@ class LogInButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Internal Methods
+    
+    func makeActive() {
+        status = .active
+    }
+    
+    func makeInactive() {
+        status = .inactive
+    }
+    
     // MARK: - Private Methods
     
     private func setupApearance() {
         self.frame = CGRect(x: 0, y: 0, width: 358.HAdapted, height: 52.VAdapted)
         self.clipsToBounds = true
         self.layer.cornerRadius = 13.HAdapted
-        self.applyGradient(colours: [.yellow, .blue])
+        switch self.status {
+        case .active:
+            self.applyGradient(colors: [.customLightPink, .customPink])
+            self.setTitleColor(.white, for: .normal)
+        case .inactive:
+            self.backgroundColor = .customLightGray
+            self.setTitleColor(.customGray, for: .normal)
+        default:
+            self.backgroundColor = .white
+            self.setTitleColor(.black, for: .normal)
+        }
     }
 }
 
+enum LogInButtonStatus {
+    case active
+    case inactive
+}
 

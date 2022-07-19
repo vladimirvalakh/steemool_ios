@@ -29,6 +29,7 @@ class SayingsViewController: UIViewController {
     private let continueButton: LogInButton = {
         let continueButton = LogInButton()
         continueButton.setTitle("Продолжить", for: .normal)
+        continueButton.makeActive()
         
         return continueButton
     }()
