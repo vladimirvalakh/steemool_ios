@@ -16,6 +16,14 @@ class MailRegistrationViewController: UIViewController {
     
     // MARK: - Views
     
+    private lazy var userNameLabel: UILabel = {
+        let userNameLabel = UILabel()
+        userNameLabel.font = UIFont(name: "SFProText-Semibold", size: CGFloat(17).adaptedFontSize)
+        userNameLabel.text = "Имя"
+        
+        return userNameLabel
+    }()
+    
     private lazy var userNameTextField: UserAuthorizationDataTextField = {
         let userNameTextField = UserAuthorizationDataTextField()
         userNameTextField.placeholder = "Ваше имя"
@@ -27,6 +35,14 @@ class MailRegistrationViewController: UIViewController {
         return userNameTextField
     }()
     
+    private lazy var emailLabel: UILabel = {
+        let emailLabel = UILabel()
+        emailLabel.font = UIFont(name: "SFProText-Semibold", size: CGFloat(17).adaptedFontSize)
+        emailLabel.text = "Emai"
+        
+        return emailLabel
+    }()
+    
     private lazy var emailTextField: UserAuthorizationDataTextField = {
         let emailTextField = UserAuthorizationDataTextField()
         emailTextField.placeholder = "Введите адрес электронной почты"
@@ -36,6 +52,14 @@ class MailRegistrationViewController: UIViewController {
         emailTextField.leftViewMode = .always
         
         return emailTextField
+    }()
+    
+    private lazy var passwordLabel: UILabel = {
+        let passwordLabel = UILabel()
+        passwordLabel.font = UIFont(name: "SFProText-Semibold", size: CGFloat(17).adaptedFontSize)
+        passwordLabel.text = "Пароль"
+        
+        return passwordLabel
     }()
     
     private lazy var passwordTextField: UserAuthorizationDataTextField = {
@@ -96,6 +120,7 @@ class MailRegistrationViewController: UIViewController {
 private extension MailRegistrationViewController {
     private func setupNavigationBar() {
         navigationController?.navigationBar.tintColor = .customPurple
+        navigationItem.title = "Регистрация"
         
         let button: UIButton = UIButton(type: .custom)
         button.tintColor = .customPurple
@@ -115,15 +140,11 @@ private extension MailRegistrationViewController {
         
         button.setAttributedTitle(fullString, for: .normal)
     
+        button.addTarget(self, action: #selector(handleLeftBarButtonItemTouch), for: .touchUpInside)
+        
         let leftBarButtonItem = UIBarButtonItem(customView: button)
         
         navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
-    @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
-        showPassword = !showPassword
-        passwordTextField.isSecureTextEntry = showPassword
-        sender.setImage(UIImage(systemName: showPassword ? "eye" : "eye.slash") ?? UIImage(), for: .normal)
     }
     
     func setupAppearance() {
@@ -131,8 +152,13 @@ private extension MailRegistrationViewController {
     }
     
     func addSubviews() {
+        view.addSubview(userNameLabel)
         view.addSubview(userNameTextField)
+        
+        view.addSubview(emailLabel)
         view.addSubview(emailTextField)
+        
+        view.addSubview(passwordLabel)
         view.addSubview(passwordTextField)
         
         view.addSubview(helpLabel)
@@ -141,11 +167,25 @@ private extension MailRegistrationViewController {
     }
     
     func configureLayout() {
+        userNameLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16.HAdapted)
+            make.top.equalToSuperview().offset(112.VAdapted)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(22.VAdapted)
+        }
+        
         userNameTextField.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.HAdapted)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(112.VAdapted)
+            make.top.equalToSuperview().offset(142.VAdapted)
             make.centerX.equalToSuperview()
             make.height.equalTo(52.VAdapted)
+        }
+        
+        emailLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16.HAdapted)
+            make.top.equalTo(userNameTextField.snp.bottom).offset(16.VAdapted)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(22.VAdapted)
         }
         
         emailTextField.snp.makeConstraints { make in
@@ -153,6 +193,13 @@ private extension MailRegistrationViewController {
             make.top.equalTo(userNameTextField.snp.bottom).offset(46.VAdapted)
             make.centerX.equalToSuperview()
             make.height.equalTo(52.VAdapted)
+        }
+        
+        passwordLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16.HAdapted)
+            make.top.equalTo(emailTextField.snp.bottom).offset(16.VAdapted)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(22.VAdapted)
         }
         
         passwordTextField.snp.makeConstraints { make in
@@ -171,11 +218,24 @@ private extension MailRegistrationViewController {
         
         logInButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.HAdapted)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-29.VAdapted)
+            make.bottom.equalToSuperview().offset(-42.VAdapted)
             make.centerX.equalToSuperview()
             make.height.equalTo(52.VAdapted)
         }
     }
 }
 
+// MARK: - Actions
+
+private extension MailRegistrationViewController {
+    @objc func handleLeftBarButtonItemTouch() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
+        showPassword = !showPassword
+        passwordTextField.isSecureTextEntry = showPassword
+        sender.setImage(UIImage(systemName: showPassword ? "eye" : "eye.slash") ?? UIImage(), for: .normal)
+    }
+}
 

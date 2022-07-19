@@ -24,7 +24,7 @@ class SayingsViewController: UIViewController {
     
     private lazy var sayingsCollectionViewFrameSpacing = (view.bounds.width - sayingsCollectionViewWidth) / 2
     
-    private let backgroundImageView = UIImageView(image: UIImage(named: "sayingsViewBackground"))
+    private let backgroundImageView = UIImageView(image: UIImage(named: "sayingsviewbackground"))
     
     private let continueButton: LogInButton = {
         let continueButton = LogInButton()
