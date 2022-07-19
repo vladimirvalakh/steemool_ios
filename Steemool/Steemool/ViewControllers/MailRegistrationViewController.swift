@@ -12,7 +12,7 @@ class MailRegistrationViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var showPassword = false
+    private var hidePassword = true
     
     // MARK: - Views
     
@@ -32,13 +32,15 @@ class MailRegistrationViewController: UIViewController {
         userNameTextField.leftView = paddingView
         userNameTextField.leftViewMode = .always
         
+        userNameTextField.addTarget(self, action: #selector(userNameTextFieldDidChange), for: .editingChanged)
+        
         return userNameTextField
     }()
     
     private lazy var emailLabel: UILabel = {
         let emailLabel = UILabel()
         emailLabel.font = UIFont(name: "SFProText-Semibold", size: CGFloat(17).adaptedFontSize)
-        emailLabel.text = "Emai"
+        emailLabel.text = "Email"
         
         return emailLabel
     }()
@@ -50,6 +52,8 @@ class MailRegistrationViewController: UIViewController {
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
         emailTextField.leftView = paddingView
         emailTextField.leftViewMode = .always
+        
+        emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         
         return emailTextField
     }()
@@ -82,6 +86,8 @@ class MailRegistrationViewController: UIViewController {
 
         passwordTextField.isSecureTextEntry = true
         
+        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
+        
         return passwordTextField
     }()
     
@@ -99,6 +105,8 @@ class MailRegistrationViewController: UIViewController {
         let logInButton = LogInButton()
         logInButton.setTitle("Зарегистрироваться", for: .normal)
         logInButton.makeInactive()
+        
+        logInButton.addTarget(self, action: #selector(handleLogInButtonTouch), for: .touchUpInside)
         
         return logInButton
     }()
@@ -223,19 +231,49 @@ private extension MailRegistrationViewController {
             make.height.equalTo(52.VAdapted)
         }
     }
+    
+    func checkLogInButtonAccessibility() {
+        guard let userName = userNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else { return }
+        
+        if userName.isEmpty || email.isEmpty || password.isEmpty {
+            logInButton.makeInactive()
+            return
+        }
+        
+        logInButton.makeActive()
+    }
 }
 
 // MARK: - Actions
 
 private extension MailRegistrationViewController {
+    @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
+        hidePassword = !hidePassword
+        passwordTextField.isSecureTextEntry = hidePassword
+        sender.setImage(UIImage(systemName: hidePassword ? "eye.slash" : "eye") ?? UIImage(), for: .normal)
+    }
+    
     @objc func handleLeftBarButtonItemTouch() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
-        showPassword = !showPassword
-        passwordTextField.isSecureTextEntry = showPassword
-        sender.setImage(UIImage(systemName: showPassword ? "eye" : "eye.slash") ?? UIImage(), for: .normal)
+    @objc func userNameTextFieldDidChange(_ textField: UITextField) {
+        checkLogInButtonAccessibility()
+    }
+    
+    @objc func emailTextFieldDidChange(_ textField: UITextField) {
+        checkLogInButtonAccessibility()
+    }
+    
+    @objc func passwordTextFieldDidChange(_ textField: UITextField) {
+        checkLogInButtonAccessibility()
     }
 }
 
+// MARK: - Private Methods
+
+private extension MailRegistrationViewController {
+    @objc func handleLogInButtonTouch(_ sender: UIButton) {
+        print("registration")
+    }
+}

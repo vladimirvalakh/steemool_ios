@@ -49,12 +49,17 @@ class LogInButton: UIButton {
         case .active:
             self.applyGradient(colors: [.customLightPink, .customPink])
             self.setTitleColor(.white, for: .normal)
+            self.isEnabled = true
         case .inactive:
+            self.removeGradient()
             self.backgroundColor = .customLightGray
             self.setTitleColor(.customGray, for: .normal)
+            self.isEnabled = false
         default:
+            self.removeGradient()
             self.backgroundColor = .white
             self.setTitleColor(.black, for: .normal)
+            self.isEnabled = true
         }
     }
 }

@@ -12,7 +12,7 @@ class AuthorizationViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var showPassword = false
+    private var hidePassword = true
     
     // MARK: - Views
     
@@ -165,12 +165,6 @@ private extension AuthorizationViewController {
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
-        showPassword = !showPassword
-        passwordTextField.isSecureTextEntry = showPassword
-        sender.setImage(UIImage(systemName: showPassword ? "eye" : "eye.slash") ?? UIImage(), for: .normal)
-    }
-    
     func setupAppearance() {
         view.backgroundColor = .backgroundColor
     }
@@ -185,11 +179,11 @@ private extension AuthorizationViewController {
         
         actionButtonsStackView.addArrangedSubview(signInButton)
         actionButtonsStackView.addArrangedSubview(logInButton)
-        
-        actionButtonsStackView.addArrangedSubview(continueWithAppleHandleButton)
-        actionButtonsStackView.addArrangedSubview(continueWithGoogleHandleButton)
-        actionButtonsStackView.addArrangedSubview(continueWithFacebookHandleButton)
-        actionButtonsStackView.addArrangedSubview(continueWithVKHandleButton)
+
+//        actionButtonsStackView.addArrangedSubview(continueWithAppleHandleButton)
+//        actionButtonsStackView.addArrangedSubview(continueWithGoogleHandleButton)
+//        actionButtonsStackView.addArrangedSubview(continueWithFacebookHandleButton)
+//        actionButtonsStackView.addArrangedSubview(continueWithVKHandleButton)
     }
     
     func configureLayout() {
@@ -215,9 +209,9 @@ private extension AuthorizationViewController {
         
         actionButtonsStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.HAdapted)
-            make.bottom.equalToSuperview().offset(-210.VAdapted)
+            make.bottom.equalToSuperview().offset(-465.VAdapted)
             make.centerX.equalToSuperview()
-            make.height.equalTo(352.VAdapted)
+            make.height.equalTo(112.VAdapted)
         }
     }
 }
@@ -225,6 +219,12 @@ private extension AuthorizationViewController {
 // MARK: - Actions
 
 private extension AuthorizationViewController {
+    @objc func toggleShowPasswordButtonView(_ sender: UIButton) {
+        hidePassword = !hidePassword
+        passwordTextField.isSecureTextEntry = hidePassword
+        sender.setImage(UIImage(systemName: hidePassword ? "eye.slash" : "eye") ?? UIImage(), for: .normal)
+    }
+    
     @objc func handleLogInButtonTouch() {
         self.navigationController?.pushViewController(MailRegistrationViewController(), animated: true)
     }
