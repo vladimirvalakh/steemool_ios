@@ -23,6 +23,7 @@
 		8513895D28868C0800D4EDE8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513895C28868C0700D4EDE8 /* UIColor+Extensions.swift */; };
 		859A4B2A2869C3D4008BF432 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */; };
 		859A4B2C2869C433008BF432 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A4B2B2869C433008BF432 /* UIView+Extensions.swift */; };
+		85AD8E5B289EE8C200066230 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AD8E5A289EE8C200066230 /* UIViewController+Extensions.swift */; };
 		85B8463F2861CC7A00904D84 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463C2861CC7A00904D84 /* SF-Pro.ttf */; };
 		85B846402861CC7A00904D84 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */; };
 		85B846412861CC7A00904D84 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */; };
@@ -66,6 +67,7 @@
 		8513895C28868C0700D4EDE8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		859A4B2B2869C433008BF432 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		85AD8E5A289EE8C200066230 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		85B8463C2861CC7A00904D84 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		85B8463D2861CC7A00904D84 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		85B8463E2861CC7A00904D84 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				85B846672861FD2C00904D84 /* UIApplication+Extensions.swift */,
 				859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */,
 				859A4B2B2869C433008BF432 /* UIView+Extensions.swift */,
+				85AD8E5A289EE8C200066230 /* UIViewController+Extensions.swift */,
 				8513895C28868C0700D4EDE8 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
@@ -494,6 +497,7 @@
 				85B846522861D44500904D84 /* AuthorizationViewController.swift in Sources */,
 				85B8465D2861ECB300904D84 /* Presentable.swift in Sources */,
 				4F425402285A69290065741B /* CGFloat.swift in Sources */,
+				85AD8E5B289EE8C200066230 /* UIViewController+Extensions.swift in Sources */,
 				4F425400285A69290065741B /* Array.swift in Sources */,
 				85B846542861EAE700904D84 /* ApplicationCoordinator.swift in Sources */,
 				85B8465F2861ED0000904D84 /* Routable.swift in Sources */,

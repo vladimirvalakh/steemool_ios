@@ -78,7 +78,6 @@ class SayingsViewController: UIViewController {
     // MARK: - Initialization and deinitialization
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        
         sayingsService = SayingsService()
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

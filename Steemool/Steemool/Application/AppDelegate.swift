@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         initializeRootView()
+        setupNavigationBarAppearance()
 
         return true
     }
@@ -31,6 +32,10 @@ private extension AppDelegate {
         
         appCoordinator.start()
     }
+    
+    func setupNavigationBarAppearance() {
+       
+   }
 }
 
 

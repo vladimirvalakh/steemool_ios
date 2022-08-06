@@ -132,6 +132,7 @@ class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         setupNavigationBar()
         
         setupAppearance()
@@ -229,4 +230,3 @@ private extension AuthorizationViewController {
         self.navigationController?.pushViewController(MailRegistrationViewController(), animated: true)
     }
 }
-

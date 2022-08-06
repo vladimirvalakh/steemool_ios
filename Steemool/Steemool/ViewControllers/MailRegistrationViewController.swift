@@ -30,10 +30,6 @@ class MailRegistrationViewController: UIViewController {
         
         userNameTextField.textContentType = .username
         
-        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
-        userNameTextField.leftView = paddingView
-        userNameTextField.leftViewMode = .always
-        
         userNameTextField.addTarget(self, action: #selector(userNameTextFieldDidChange), for: .editingChanged)
         
         return userNameTextField
@@ -54,10 +50,6 @@ class MailRegistrationViewController: UIViewController {
         emailTextField.textContentType = .emailAddress
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
-        
-        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
-        emailTextField.leftView = paddingView
-        emailTextField.leftViewMode = .always
         
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         
@@ -124,6 +116,7 @@ class MailRegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         setupNavigationBar()
         
         setupAppearance()
