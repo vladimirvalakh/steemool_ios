@@ -14,11 +14,7 @@ class UserAuthorizationDataTextField: UITextField {
     init() {
         super.init(frame: .zero)
         
-        self.frame = CGRect(x: 0, y: 0, width: 358, height: 52)
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 13.HAdapted
-        self.backgroundColor = .white
-        self.tintColor = .lightGray
+        setupAppearance()
     }
     
     required init?(coder: NSCoder) {
@@ -26,3 +22,18 @@ class UserAuthorizationDataTextField: UITextField {
     }
 }
 
+// MARK: - Appearance Methods
+
+private extension UserAuthorizationDataTextField {
+    func setupAppearance() {
+        self.frame = CGRect(x: 0, y: 0, width: 358, height: 52)
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 13.HAdapted
+        self.backgroundColor = .white
+        self.tintColor = .lightGray
+        
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 9.HAdapted, height: 0))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+}

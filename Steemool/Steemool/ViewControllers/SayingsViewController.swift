@@ -24,11 +24,12 @@ class SayingsViewController: UIViewController {
     
     private lazy var sayingsCollectionViewFrameSpacing = (view.bounds.width - sayingsCollectionViewWidth) / 2
     
-    private let backgroundImageView = UIImageView(image: UIImage(named: "sayingsViewBackground"))
+    private let backgroundImageView = UIImageView(image: UIImage(named: "sayingsviewbackground"))
     
     private let continueButton: LogInButton = {
         let continueButton = LogInButton()
         continueButton.setTitle("Продолжить", for: .normal)
+        continueButton.makeActive()
         
         return continueButton
     }()
@@ -77,7 +78,6 @@ class SayingsViewController: UIViewController {
     // MARK: - Initialization and deinitialization
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        
         sayingsService = SayingsService()
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

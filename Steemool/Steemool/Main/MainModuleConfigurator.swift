@@ -8,8 +8,8 @@
 import Foundation
 
 final class MainModuleConfigurator {
-    func configure() -> (SayingsViewController) {
-        let view = SayingsViewController(nibName: nil, bundle: nil)
+    func configure() -> (AuthorizationViewController) {
+        let view = AuthorizationViewController(nibName: nil, bundle: nil)
         
         return (view)
     }

@@ -12,7 +12,7 @@ class AuthorizationViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var showPassword = false
+    private var hidePassword = true
     
     // MARK: - Views
     
@@ -79,18 +79,21 @@ class AuthorizationViewController: UIViewController {
         return actionButtonsStackView
     }()
     
-    private lazy var signInHandleButton: LogInButton = {
-        let signInHandleButton = LogInButton()
-        signInHandleButton.setTitle("Войти", for: .normal)
+    private lazy var signInButton: LogInButton = {
+        let signInButton = LogInButton()
+        signInButton.setTitle("Войти", for: .normal)
+        signInButton.makeActive()
         
-        return signInHandleButton
+        return signInButton
     }()
     
-    private lazy var logInHandleButton: LogInButton = {
-        let logInHandleButton = LogInButton()
-        logInHandleButton.setTitle("Зарегистрироваться", for: .normal)
+    private lazy var logInButton: LogInButton = {
+        let logInButton = LogInButton()
+        logInButton.setTitle("Зарегистрироваться", for: .normal)
         
-        return logInHandleButton
+        logInButton.addTarget(self, action: #selector(handleLogInButtonTouch), for: .touchUpInside)
+        
+        return logInButton
     }()
     
     private var continueWithAppleHandleButton: ContinueWithAccountButton = {
@@ -129,6 +132,7 @@ class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         setupNavigationBar()
         
         setupAppearance()
@@ -143,32 +147,27 @@ private extension AuthorizationViewController {
    private func setupNavigationBar() {
         let button: UIButton = UIButton(type: .custom)
         
-        button.setTitle("Пропустить ", for: .normal)
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .customPurple
+        button.setTitleColor(.customPurple, for: .normal)
         
-        let color = UIColor(red: 0.639, green: 0.416, blue: 0.98, alpha: 1)
-        button.tintColor = color
-        button.setTitleColor(color, for: .normal)
-        
-        button.contentMode = .right
-        button.semanticContentAttribute = .forceRightToLeft
-        
-        if let font = UIFont(name: "SFProText-Regular", size: CGFloat(17).adaptedFontSize) {
-            button.titleLabel?.font = font
-        }
-        let rightBarButtonItem = UIBarButtonItem(customView: button)
+       let fullString = NSMutableAttributedString(string: "Пропустить ")
+       
+       let imageAttachment = NSTextAttachment()
+       imageAttachment.image = UIImage(systemName: "chevron.right")?.withTintColor(.customPurple)
+       
+       let imageString = NSAttributedString(attachment: imageAttachment)
+       
+       fullString.append(imageString)
+       
+       button.setAttributedTitle(fullString, for: .normal)
+       
+       let rightBarButtonItem = UIBarButtonItem(customView: button)
         
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    @objc private func toggleShowPasswordButtonView(_ sender: UIButton) {
-        showPassword = !showPassword
-        passwordTextField.isSecureTextEntry = showPassword
-        sender.setImage(UIImage(systemName: showPassword ? "eye" : "eye.slash") ?? UIImage(), for: .normal)
-    }
-    
     func setupAppearance() {
-        view.backgroundColor = UIColor(red: 0.815, green: 0.815, blue: 0.815, alpha: 1)
+        view.backgroundColor = .backgroundColor
     }
     
     func addSubviews() {
@@ -179,13 +178,13 @@ private extension AuthorizationViewController {
         
         view.addSubview(actionButtonsStackView)
         
-        actionButtonsStackView.addArrangedSubview(signInHandleButton)
-        actionButtonsStackView.addArrangedSubview(logInHandleButton)
-        
-        actionButtonsStackView.addArrangedSubview(continueWithAppleHandleButton)
-        actionButtonsStackView.addArrangedSubview(continueWithGoogleHandleButton)
-        actionButtonsStackView.addArrangedSubview(continueWithFacebookHandleButton)
-        actionButtonsStackView.addArrangedSubview(continueWithVKHandleButton)
+        actionButtonsStackView.addArrangedSubview(signInButton)
+        actionButtonsStackView.addArrangedSubview(logInButton)
+
+//        actionButtonsStackView.addArrangedSubview(continueWithAppleHandleButton)
+//        actionButtonsStackView.addArrangedSubview(continueWithGoogleHandleButton)
+//        actionButtonsStackView.addArrangedSubview(continueWithFacebookHandleButton)
+//        actionButtonsStackView.addArrangedSubview(continueWithVKHandleButton)
     }
     
     func configureLayout() {
@@ -211,9 +210,23 @@ private extension AuthorizationViewController {
         
         actionButtonsStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.HAdapted)
-            make.bottom.equalToSuperview().offset(-210.VAdapted)
+            make.bottom.equalToSuperview().offset(-465.VAdapted)
             make.centerX.equalToSuperview()
-            make.height.equalTo(352.VAdapted)
+            make.height.equalTo(112.VAdapted)
         }
+    }
+}
+
+// MARK: - Actions
+
+private extension AuthorizationViewController {
+    @objc func toggleShowPasswordButtonView(_ sender: UIButton) {
+        hidePassword = !hidePassword
+        passwordTextField.isSecureTextEntry = hidePassword
+        sender.setImage(UIImage(systemName: hidePassword ? "eye.slash" : "eye") ?? UIImage(), for: .normal)
+    }
+    
+    @objc func handleLogInButtonTouch() {
+        self.navigationController?.pushViewController(MailRegistrationViewController(), animated: true)
     }
 }

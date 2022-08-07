@@ -8,13 +8,23 @@
 import UIKit
 
 extension UIView {
-    func applyGradient(colours: [UIColor], locations: [NSNumber]? = nil) {
+    func applyGradient(colors: [UIColor], locations: [NSNumber]? = nil) {
+        if let firstIndex = self.layer.sublayers?.firstIndex(where: {$0.name == "gradient" }) {
+            return
+        }
+        
         let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.name = "gradient"
         gradient.frame = self.bounds
-        gradient.colors = [UIColor(red: 0.975, green: 0.562, blue: 1, alpha: 1).cgColor,
-                           UIColor(red: 0.831, green: 0.35, blue: 1, alpha: 1).cgColor]
+        gradient.colors = colors.map { $0.cgColor }
 
         gradient.position = self.center
         self.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    func removeGradient() {
+        if let firstIndex = self.layer.sublayers?.firstIndex(where: {$0.name == "gradient" }) {
+            self.layer.sublayers?.remove(at: firstIndex)
+        }
     }
 }
