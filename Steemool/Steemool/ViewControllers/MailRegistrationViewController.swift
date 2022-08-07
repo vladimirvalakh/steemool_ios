@@ -116,7 +116,10 @@ class MailRegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.hideKeyboard()
+        registerForKeyboardNotifications()
+        
         setupNavigationBar()
         
         setupAppearance()
@@ -226,12 +229,7 @@ private extension MailRegistrationViewController {
             make.height.equalTo(18.VAdapted)
         }
         
-        logInButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16.HAdapted)
-            make.bottom.equalToSuperview().offset(-42.VAdapted)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(52.VAdapted)
-        }
+        changeLogInButtonConstraints()
     }
     
     func checkLogInButtonAccessibility() {
@@ -278,5 +276,49 @@ private extension MailRegistrationViewController {
 private extension MailRegistrationViewController {
     @objc func handleLogInButtonTouch(_ sender: UIButton) {
         print("registration")
+    }
+}
+
+// MARK: - Keyboard methods
+
+private extension MailRegistrationViewController {
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        changeLogInButtonConstraints(notification, keyboardIsShown: true)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        changeLogInButtonConstraints(notification)
+    }
+    
+    func changeLogInButtonConstraints(_ notification: NSNotification? = nil, keyboardIsShown: Bool = false) {
+        logInButton.snp.removeConstraints()
+        
+        if keyboardIsShown, let notification = notification {
+            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            else { return }
+            
+            let keyboardHeight = Int(keyboardSize.height)
+            
+            logInButton.snp.makeConstraints { make in
+                make.leading.equalToSuperview().offset(16.HAdapted)
+                make.bottom.equalToSuperview().offset(-(5 + keyboardHeight).VAdapted)
+                make.centerX.equalToSuperview()
+                make.height.equalTo(52.VAdapted)
+            }
+        
+            return
+        }
+       
+        logInButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16.HAdapted)
+            make.bottom.equalToSuperview().offset(-42.VAdapted)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(52.VAdapted)
+        }
     }
 }
