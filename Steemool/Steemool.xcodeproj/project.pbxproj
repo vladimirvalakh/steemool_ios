@@ -19,6 +19,8 @@
 		4F425405285A69290065741B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4253FD285A69290065741B /* Device.swift */; };
 		4F42540C285C76950065741B /* SayingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42540B285C76950065741B /* SayingsService.swift */; };
 		4F42540F285C80600065741B /* Saying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42540E285C80600065741B /* Saying.swift */; };
+		4F7FC4BF289FF383004FA80D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FC4BE289FF383004FA80D /* AuthService.swift */; };
+		4F7FC4C3289FFB17004FA80D /* NetworkingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FC4C2289FFB17004FA80D /* NetworkingHelper.swift */; };
 		8513895B2885D6E000D4EDE8 /* MailRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513895A2885D6E000D4EDE8 /* MailRegistrationViewController.swift */; };
 		8513895D28868C0800D4EDE8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8513895C28868C0700D4EDE8 /* UIColor+Extensions.swift */; };
 		859A4B2A2869C3D4008BF432 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859A4B292869C3D4008BF432 /* UIImage+Extensions.swift */; };
@@ -62,6 +64,8 @@
 		4F4253FD285A69290065741B /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4F42540B285C76950065741B /* SayingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SayingsService.swift; sourceTree = "<group>"; };
 		4F42540E285C80600065741B /* Saying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saying.swift; sourceTree = "<group>"; };
+		4F7FC4BE289FF383004FA80D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4F7FC4C2289FFB17004FA80D /* NetworkingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelper.swift; sourceTree = "<group>"; };
 		5AF4C0D12270EE6A18D5FEBE /* Pods-Steemool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steemool.release.xcconfig"; path = "Target Support Files/Pods-Steemool/Pods-Steemool.release.xcconfig"; sourceTree = "<group>"; };
 		8513895A2885D6E000D4EDE8 /* MailRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailRegistrationViewController.swift; sourceTree = "<group>"; };
 		8513895C28868C0700D4EDE8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				4F42540B285C76950065741B /* SayingsService.swift */,
+				4F7FC4BE289FF383004FA80D /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 		85B846612861FAB300904D84 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4F7FC4C2289FFB17004FA80D /* NetworkingHelper.swift */,
 				85B846642861FAE300904D84 /* Router.swift */,
 			);
 			path = Helpers;
@@ -477,6 +483,7 @@
 				4F4253D1285A609D0065741B /* SayingsViewController.swift in Sources */,
 				85B846502861D41700904D84 /* ContinueWithAccountButton.swift in Sources */,
 				85B8465B2861EC7800904D84 /* Coordinatable.swift in Sources */,
+				4F7FC4C3289FFB17004FA80D /* NetworkingHelper.swift in Sources */,
 				4F4253CD285A609D0065741B /* AppDelegate.swift in Sources */,
 				85B8466F286200FC00904D84 /* Closures.swift in Sources */,
 				85B846572861EBFE00904D84 /* BaseCoordinator.swift in Sources */,
@@ -496,6 +503,7 @@
 				85B8464C2861D3DA00904D84 /* UserAuthorizationDataTextField.swift in Sources */,
 				85B846522861D44500904D84 /* AuthorizationViewController.swift in Sources */,
 				85B8465D2861ECB300904D84 /* Presentable.swift in Sources */,
+				4F7FC4BF289FF383004FA80D /* AuthService.swift in Sources */,
 				4F425402285A69290065741B /* CGFloat.swift in Sources */,
 				85AD8E5B289EE8C200066230 /* UIViewController+Extensions.swift in Sources */,
 				4F425400285A69290065741B /* Array.swift in Sources */,

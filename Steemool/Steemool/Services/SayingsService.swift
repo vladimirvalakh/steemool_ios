@@ -17,22 +17,6 @@ private struct SayingsResponse: Decodable {
     let data: [Saying]
 }
 
-fileprivate enum SayingsLink {
-    case link(scheme: String, host: String, path: String, id: String? = nil)
-    
-    static let allSayingsLink = SayingsLink.link(scheme: SayingsService.scheme,
-                                                 host: SayingsService.host,
-                                                 path: "/api/v1/sayings")
-    
-    static let randomSayingLink = SayingsLink.link(scheme: SayingsService.scheme,
-                                                  host: SayingsService.host,
-                                                  path: "/api/v1/saying/random")
-    
-    static func sayingLink(with id: String) -> SayingsLink {
-        .link(scheme: SayingsService.scheme, host: SayingsService.host, path: "/api/v1/saying", id: id)
-    }
-}
-
 protocol SayingsServiceProtocol {
     func getAllSayings(completion: @escaping ([Saying]?, Error?) -> ())
     func getRandomSaying(completion: @escaping (Saying?, Error?) -> ())
@@ -41,24 +25,17 @@ protocol SayingsServiceProtocol {
 
 class SayingsService {
     
-    fileprivate static let scheme = "http"
-    fileprivate static let host = ProcessInfo.processInfo.environment["api_host"]!
+    //links
+    private let allSayingsLink = Link(path: "/api/v1/sayings")
+    private let randomSayingLink = Link(path: "/api/v1/saying/random")
     
-    private func buildURL(from link: SayingsLink) -> URL? {
-        switch link {
-        case .link(let scheme, let host, let path, let id):
-            var components = URLComponents()
-            components.scheme = scheme
-            components.host = host
-            components.path = path
-            if let id = id { components.path += "/\(id)" }
-            return components.url
-        }
+    private func sayingLink(with id: String) -> Link {
+        Link(path: "/api/v1/saying", id: id)
     }
     
-    private func fetchData(from link: SayingsLink, completion: @escaping (Data?, Error?) -> ()) {
+    private func fetchData(from link: Link, completion: @escaping (Data?, Error?) -> ()) {
 
-        guard let url = buildURL(from: link) else {
+        guard let url = NetworkingHelper.buildURL(from: link) else {
             let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL)
             completion(nil, error)
             return
@@ -87,7 +64,7 @@ extension SayingsService: SayingsServiceProtocol {
     
     func getAllSayings(completion: @escaping ([Saying]?, Error?) -> ()) {
         
-        fetchData(from: SayingsLink.allSayingsLink) { data, error in
+        fetchData(from: allSayingsLink) { data, error in
             if let error = error {
                 completion(nil, error)
                 return
@@ -108,7 +85,7 @@ extension SayingsService: SayingsServiceProtocol {
     
     func getRandomSaying(completion: @escaping (Saying?, Error?) -> ()) {
         
-        fetchData(from: SayingsLink.randomSayingLink) { data, error in
+        fetchData(from: randomSayingLink) { data, error in
             if let error = error {
                 completion(nil, error)
                 return
@@ -128,7 +105,7 @@ extension SayingsService: SayingsServiceProtocol {
     
     func getSaying(with id: String, completion: @escaping (Saying?, Error?) -> ()) {
         
-        fetchData(from: SayingsLink.sayingLink(with: id)) { data, error in
+        fetchData(from: sayingLink(with: id)) { data, error in
             if let error = error {
                 completion(nil, error)
                 return
