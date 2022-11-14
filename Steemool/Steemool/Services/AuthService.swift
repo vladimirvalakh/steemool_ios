@@ -35,7 +35,13 @@ fileprivate struct AuthDataResponse: Codable {
     }
 }
 
-class AuthService {
+protocol AuthServiceProtocol {
+    func registerUser(name: String, email: String, password: String, completion: @escaping (String?, Error?) -> ())
+    func authUser(email: String, password: String, completion: @escaping (String?, Error?) -> ())
+    func refreshToken(completion: @escaping (String?, Error?) -> ())
+}
+
+class AuthService: AuthServiceProtocol {
     
     private let registerLink = Link(path: "/api/v1/user/register")
     private let authLink = Link(path: "/api/v1/user/auth")
@@ -66,13 +72,15 @@ class AuthService {
 
 extension AuthService {
     
-    func registerUser(with name: String, email: String, password: String, completion: @escaping (String?, Error?) -> ()) {
+    func registerUser(name: String, email: String, password: String, completion: @escaping (String?, Error?) -> ()) {
         
         //convert method data to Data type
         var jsonData = Data()
         do {
             let userData = RegistrationData(name: name, email: email, password: password)
-            jsonData = try JSONSerialization.data(withJSONObject: userData)
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            jsonData = try encoder.encode(userData)
         } catch let error {
             completion(nil, error)
             return
@@ -95,9 +103,9 @@ extension AuthService {
                 completion(nil, error)
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: String] {
-                guard let status = responseJSON["status"] else { return }
+            
+            let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            if let status = json?["status"] as? String {
                 completion(status, nil)
             }
         }
@@ -105,13 +113,15 @@ extension AuthService {
         task.resume()
     }
     
-    func authUser(with email: String, password: String, completion: @escaping (String?, Error?) -> ()) {
+    func authUser(email: String, password: String, completion: @escaping (String?, Error?) -> ()) {
         
         //convert method data to Data type
         var jsonData = Data()
         do {
             let userData = AuthData(email: email, password: password)
-            jsonData = try JSONSerialization.data(withJSONObject: userData)
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            jsonData = try encoder.encode(userData)
         } catch let error {
             completion(nil, error)
             return
@@ -135,8 +145,15 @@ extension AuthService {
                 return
             }
             
-            let decoder = JSONDecoder()
-            let responseData = try? decoder.decode(AuthResponse.self, from: data)
+            var responseData: AuthResponse? = nil
+            do {
+                let decoder = JSONDecoder()
+                responseData = try decoder.decode(AuthResponse.self, from: data)
+            } catch let error {
+                completion(nil, error)
+                return
+            }
+            
             self.accessToken = responseData?.data.token
             self.refreshTokenExpirationDate = Date().timeIntervalSinceReferenceDate + Double(responseData!.data.refreshTokenExpiresIn)
             completion(responseData?.status, nil)
